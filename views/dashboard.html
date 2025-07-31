@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Helmet Violation Detection Dashboard</title>
+    <link rel="stylesheet" href="/static/dashboard_style.css"> 
+
+    
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+</head>
+<body>
+
+    <div class="area"></div><nav class="main-menu">
+        <!-- <ul> -->
+            <!-- <li>
+                <a href="https://jbfarrow.com">
+                    <i class="fa fa-home fa-2x"></i>
+                    <span class="nav-text">
+                       Community Dashboard
+                    </span>
+                </a>
+              
+            </li>
+            
+            <li class="has-subnav">
+                <a href="#">
+                   <i class="fa fa-camera-retro fa-2x"></i>
+                    <span class="nav-text">
+                        Survey Photos
+                    </span>
+                </a>
+               
+            </li> -->
+    
+            <!-- <li>
+               <a href="#">
+                    <i class="fa fa-map-marker fa-2x"></i>
+                    <span class="nav-text">
+                        City Map
+                    </span>
+                </a>
+            </li> -->
+            <!-- <li>
+                <a href="#">
+                   <i class="fa fa-info fa-2x"></i>
+                    <span class="nav-text">
+                        
+                    </span>
+                </a>
+            </li> 
+        </ul>-->
+
+        
+            <ul class="logout">
+                <li>
+                    <a href="/route/logout">
+                        <i class="fa fa-power-off fa-2x"></i>
+                        <span class="nav-text">
+                            Logout
+                        </span>
+                    </a>
+                </li>  
+            </ul>
+        </nav>
+    </div>
+    <div class="content">
+
+    <header>
+        <h1>Helmet Violation Detection Dashboard</h1>
+    </header>
+
+    <div class="container2">
+        <div class="city-box" id="city1">
+            <img src="/static/assets/patiala.jpg" alt="City 1">
+            <h2>Patiala</h2>
+            <label for="area1">Select Area:</label>
+            <select id="area1" name="area">
+                <option value="area1-1">Area 1-1</option>
+                <option value="area1-2">Area 1-2</option>
+                <!-- Add more areas for City 1 here -->
+            </select>
+            <button class="start-monitoring" data-city="city1"><a href="http://localhost:8501" target="_blank" style="color: red;">Start Monitoring</a>
+            </button>
+        </div>
+
+        <div class="city-box" id="city2">
+            <img src="/static/assets/jalandhar.jpg" alt="City 2">
+            <h2>Jalandhar</h2>
+            <label for="area2">Select Area:</label>
+            <select id="area2" name="area">
+                <option value="area2-1">Area 2-1</option>
+                <option value="area2-2">Area 2-2</option>
+                <!-- Add more areas for City 2 here -->
+            </select>
+            <button class="start-monitoring" data-city="city2"><a href="http://localhost:8501" target="_blank" style="color: red; ">Start Monitoring</a>
+            </button>
+        </div>
+
+        <div class="city-box" id="city3">
+            <img src="/static/assets/ludhiana.jpeg" alt="City 3">
+            <h2>Ludhiana</h2>
+            <label for="area3">Select Area:</label>
+            <select id="area3" name="area">
+                <option value="area3-1">Area 3-1</option>
+                <option value="area3-2">Area 3-2</option>
+                <!-- Add more areas for City 3 here -->
+            </select>
+            <button class="start-monitoring" data-city="city3"><a href="http://localhost:8501" target="_blank" style="color: red;">Start Monitoring</a>
+            </button>
+        </div>
+
+        <div class="city-box" id="city4">
+            <img src="/static/assets/amritsar.jpg" alt="City 4">
+            <h2>Amritsar</h2>
+            <label for="area4">Select Area:</label>
+            <select id="area4" name="area">
+                <option value="area4-1">Area 4-1</option>
+                <option value="area4-2">Area 4-2</option>
+                <!-- Add more areas for City 4 here -->
+            </select>
+            <button class="start-monitoring" data-city="city4"><a href="http://localhost:8501" target="_blank" style="color: red;">Start Monitoring</a>
+            </button>
+        </div>
+
+        <div class="city-box" id="city4">
+            <img src="/static/assets/amritsar.jpg" alt="City 5">
+            <h2>Ropar</h2>
+            <label for="area4">Select Area:</label>
+            <select id="area4" name="area">
+                <option value="area4-1">Area 4-1</option>
+                <option value="area4-2">Area 4-2</option>
+                <!-- Add more areas for City 4 here -->
+            </select>
+            <button class="start-monitoring" data-city="city5"><a href="http://localhost:8501" target="_blank" style="color: red;">Start Monitoring</a>
+            </button>
+        </div>
+
+        <div class="city-box" id="city4">
+            <img src="/static/assets/amritsar.jpg" alt="City 6">
+            <h2>Firozpur</h2>
+            <label for="area4">Select Area:</label>
+            <select id="area4" name="area">
+                <option value="area4-1">Area 4-1</option>
+                <option value="area4-2">Area 4-2</option>
+                <!-- Add more areas for City 4 here -->
+            </select>
+            <button class="start-monitoring" data-city="city6"><a href="http://localhost:8501" target="_blank" style="color: red;">Start Monitoring</a>
+            </button>
+        </div>
+
+        <div class="city-box" id="city4">
+            <img src="/static/assets/amritsar.jpg" alt="City 7">
+            <h2>Pathankot</h2>
+            <label for="area4">Select Area:</label>
+            <select id="area4" name="area">
+                <option value="area4-1">Area 4-1</option>
+                <option value="area4-2">Area 4-2</option>
+                <!-- Add more areas for City 4 here -->
+            </select>
+            <button class="start-monitoring" data-city="city7"><a href="http://localhost:8501" target="_blank" style="color: red;">Start Monitoring</a>
+            </button>
+        </div>
+
+        <div class="city-box" id="city4">
+            <img src="/static/assets/amritsar.jpg" alt="City 8">
+            <h2>Gurdaspur</h2>
+            <label for="area4">Select Area:</label>
+            <select id="area4" name="area">
+                <option value="area4-1">Area 4-1</option>
+                <option value="area4-2">Area 4-2</option>
+                <!-- Add more areas for City 4 here -->
+            </select>
+            <button class="start-monitoring" data-city="city8"><a href="http://localhost:8501" target="_blank" style="color: red;">Start Monitoring</a>
+            </button>
+        </div>
+    </div>
+</div>
+
+
+
+</body>
+</html>
