@@ -1,211 +1,155 @@
 body {
+    margin: 0;
     font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
-    margin: 0;
-    padding: 0;
+    background: #f4f6f8;
+    color: #1f2933;
 }
 
-header {
-    background: #e91e63;
-    color: #fff;
+.sidebar {
+    position: fixed;
+    inset: 0 auto 0 0;
+    width: 220px;
+    background: #102a43;
+    color: #ffffff;
+    padding: 24px 18px;
+    box-sizing: border-box;
+}
+
+.sidebar-title {
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 1.3;
+}
+
+.logout-link {
+    position: absolute;
+    bottom: 24px;
+    left: 18px;
+    right: 18px;
+    display: block;
+    padding: 12px;
+    border-radius: 8px;
+    background: #243b53;
+    color: #ffffff;
     text-align: center;
-    padding: 20px;
-    margin-top: 0;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    margin-right: 150px;
+    text-decoration: none;
 }
 
-h1 {
-    font-size: 2.5rem;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    margin: 0;
-}
-
-.container2 {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-}
-
-.city-box {
-    text-align: center;
-    padding: 20px;
-    border: 2px solid #3498db;
-    border-radius: 10px;
-    margin: 20px;
-    width: 350px;
-    background-color: #fff;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.city-box img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 10px 10px 0 0;
-}
-
-.city-box h2 {
-    margin: 15px 0;
-    font-size: 1.8rem;
-    color: #333;
-}
-
-select {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-.start-monitoring {
-    background: #ffd700;
-    color: #fff;
-    padding: 12px 20px;
-    border: none;
-    cursor: pointer;
-    width: 100%;
-    border-radius: 5px;
-}
-
-.start-monitoring:hover {
-    background: #e0e0e0;
+.logout-link:hover,
+.logout-link:focus {
+    background: #334e68;
 }
 
 .content {
-    margin-left: 250px; /* Adjust this value to create space for the side navbar */
-    padding: 20px;
+    margin-left: 220px;
+    padding: 32px;
 }
 
-@import url(//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css);
-
-@import url(https://fonts.googleapis.com/css?family=Titillium+Web:300);
-.fa-2x {
-font-size: 2em;
-}
-.fa {
-position: relative;
-display: table-cell;
-width: 60px;
-height: 36px;
-text-align: center;
-vertical-align: middle;
-font-size:20px;
+.dashboard-header {
+    max-width: 900px;
+    margin-bottom: 28px;
 }
 
-
-.main-menu:hover,nav.main-menu.expanded {
-width:250px;
-overflow:visible;
+.eyebrow {
+    margin: 0 0 8px;
+    color: #52606d;
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
 }
 
-.main-menu {
-background: #001f3f;
-border-right:1px solid #e5e5e5;
-position:fixed;
-top:0;
-bottom:0;
-height:100%;
-left:0;
-width:60px;
-overflow:hidden;
--webkit-transition:width .05s linear;
-transition:width .05s linear;
--webkit-transform :translateZ(0) scale(1,1);
-z-index:1000;
+h1 {
+    margin: 0 0 10px;
+    font-size: clamp(28px, 4vw, 44px);
+    line-height: 1.1;
 }
 
-.main-menu>ul {
-margin:7px 0;
+.dashboard-header p:last-child {
+    margin: 0;
+    color: #52606d;
+    font-size: 17px;
 }
 
-.main-menu li {
-position:relative;
-display:block;
-width:250px;
+.city-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
 }
 
-.main-menu li>a {
-position:relative;
-display:table;
-border-collapse:collapse;
-border-spacing:0;
-color:#999;
- font-family: arial;
-font-size: 14px;
-text-decoration:none;
--webkit-transform:translateZ(0) scale(1,1);
--webkit-transition:all .1s linear;
-transition:all .1s linear;
-  
+.city-card {
+    overflow: hidden;
+    border: 1px solid #d9e2ec;
+    border-radius: 10px;
+    background: #ffffff;
+    box-shadow: 0 10px 24px rgba(16, 42, 67, 0.08);
 }
 
-.main-menu .nav-icon {
-position:relative;
-display:table-cell;
-width:60px;
-height:36px;
-text-align:center;
-vertical-align:middle;
-font-size:18px;
-margin-right: 10px; /* Add spacing to the right of the icon */
-
+.city-card img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    display: block;
 }
 
-.main-menu .nav-text {
-position:relative;
-display:table-cell;
-vertical-align:middle;
-width:160px;
-  font-family: 'Titillium Web', sans-serif;
+.city-card-content {
+    padding: 18px;
 }
 
-.main-menu>ul.logout {
-position:absolute;
-left:0;
-bottom:0;
+.city-card h2 {
+    margin: 0 0 14px;
+    font-size: 22px;
 }
 
-.no-touch .scrollable.hover {
-overflow-y:hidden;
+.city-card label {
+    display: block;
+    margin-bottom: 8px;
+    color: #52606d;
+    font-size: 14px;
+    font-weight: 700;
 }
 
-.no-touch .scrollable.hover:hover {
-overflow-y:auto;
-overflow:visible;
+.city-card select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #bcccdc;
+    border-radius: 8px;
+    background: #ffffff;
 }
 
-a:hover,a:focus {
-text-decoration:none;
+.monitor-link {
+    display: block;
+    margin-top: 14px;
+    padding: 12px 14px;
+    border-radius: 8px;
+    background: #0f766e;
+    color: #ffffff;
+    text-align: center;
+    text-decoration: none;
+    font-weight: 700;
 }
 
-nav {
--webkit-user-select:none;
--moz-user-select:none;
--ms-user-select:none;
--o-user-select:none;
-user-select:none;
+.monitor-link:hover,
+.monitor-link:focus {
+    background: #115e59;
 }
 
-nav ul,nav li {
-outline:0;
-margin:0;
-padding:0;
-}
-.main-menu li:hover>a,nav.main-menu li.active>a,.dropdown-menu>li>a:hover,.dropdown-menu>li>a:focus,.dropdown-menu>.active>a,.dropdown-menu>.active>a:hover,.dropdown-menu>.active>a:focus,.no-touch .dashboard-page nav.dashboard-menu ul li:hover a,.dashboard-page nav.dashboard-menu ul li.active a {
-color:#fff;
-background-color:#e0e0e0;
-}
-.area {
-float: left;
-background: #e2e2e2;
-width: 100%;
-height: 100%;
-}
-@font-face {
-  font-family: 'Titillium Web';
-  font-style: normal;
-  font-weight: 300;
-  src: local('Titillium WebLight'), local('TitilliumWeb-Light'), url(http://themes.googleusercontent.com/static/fonts/titilliumweb/v2/anMUvcNT0H1YN4FII8wpr24bNCNEoFTpS2BTjF6FB5E.woff) format('woff');
+@media (max-width: 760px) {
+    .sidebar {
+        position: static;
+        width: auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .logout-link {
+        position: static;
+        width: auto;
+        padding: 10px 14px;
+    }
+
+    .content {
+        margin-left: 0;
+        padding: 20px;
+    }
 }

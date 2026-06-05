@@ -5,6 +5,8 @@ body {
     background-image: url('assets/login.png');
     background-size: cover;
     background-repeat: no-repeat;
+    background-position: center;
+    margin: 0;
 }
 
 .center-div {
@@ -15,14 +17,15 @@ body {
 }
 
 .container {
-    width: 30%;
+    width: min(420px, 92vw);
     background-color: #fff;
     border: 2px solid #ccc;
     border-radius: 20px;
     padding: 30px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
-    margin-left: 1100px; /* Adjust the margin-left to shift the container to the right */
-    margin-bottom: 100px;
+    margin-left: auto;
+    margin-right: 8vw;
+    margin-bottom: 60px;
 }
 
 .title h2 {
@@ -34,13 +37,22 @@ body {
     font-size: 18px;
 }
 
-.alter {
+.alert {
     padding: 15px;
     margin: 15px 0;
+    border-radius: 10px;
+}
+
+.alert-success {
     border: 2px solid #2ecc71;
     background-color: #2ecc71;
     color: #fff;
-    border-radius: 10px;
+}
+
+.alert-danger {
+    border: 2px solid #dc3545;
+    background-color: #dc3545;
+    color: #fff;
 }
 
 form {
@@ -57,6 +69,13 @@ form {
     border: 2px solid #ccc;
     border-radius: 10px;
     font-size: 20px;
+}
+
+.form-group label {
+    display: block;
+    text-align: left;
+    font-weight: 600;
+    margin-bottom: 8px;
 }
 
 .form-group input::placeholder {
@@ -82,11 +101,10 @@ form {
     background-color: #1d9238;
 }
 
-/* Media Queries for responsiveness */
 @media screen and (max-width: 768px) {
     .container {
         width: 90%;
-        margin-left: auto; /* Center the container on smaller screens */
+        margin-left: auto;
         margin-right: auto;
     }
 }

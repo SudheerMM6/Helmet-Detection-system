@@ -1,40 +1,43 @@
-var express = require("express");
-var router = express.Router();
+const express = require("express");
+const router = express.Router();
 const path = require("path");
 
-const  credential = {
-    email : "admin@gmail.com",
-    password : "admin123"
-}
+const dashboardUser = process.env.DASHBOARD_USER || "admin@example.com";
+const dashboardPassword = process.env.DASHBOARD_PASSWORD || "change-me";
 
-// login user
 router.post('/login', (req, res)=>{
-    if(req.body.email == credential.email && req.body.password == credential.password){
+    if(req.body.email === dashboardUser && req.body.password === dashboardPassword){
         req.session.user = req.body.email;
         res.redirect('/route/dashboard');
-        //res.end("Login Successful...!");
     }else{
-        res.end("Invalid Username")
+        res.status(401).render('base', {
+            title: "Helmet Detection Dashboard",
+            error: "Invalid email or password"
+        });
     }
 });
 
-// route for dashboard
 router.get('/dashboard', (req, res) => {
     if (req.session.user) {
         const filePath = path.join(__dirname, 'views/dashboard.html');
         res.sendFile(filePath);
     } else {
-        res.send("Unauthorize User");
+        res.status(401).render('base', {
+            title: "Helmet Detection Dashboard",
+            error: "Please log in to open the dashboard"
+        });
     }
 });
-// route for logout
+
 router.get('/logout', (req ,res)=>{
     req.session.destroy(function(err){
         if(err){
-            console.log(err);
-            res.send("Error")
+            res.status(500).send("Could not log out")
         }else{
-            res.render('base', { title: "Express", logout : "logout Successfully...!"})
+            res.render('base', {
+                title: "Helmet Detection Dashboard",
+                logout : "Logged out successfully"
+            })
         }
     })
 })

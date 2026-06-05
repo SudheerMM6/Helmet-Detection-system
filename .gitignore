@@ -1,1 +1,9 @@
 node_modules/
+.env
+*.log
+python_streamlit/helmet_data/
+python_streamlit/temp_helmet_data/
+__pycache__/
+.venv/
+.vscode/
+.Rhistory

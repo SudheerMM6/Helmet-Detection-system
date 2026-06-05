@@ -5,15 +5,14 @@ import streamlit as st
 import tempfile
 import os
 
-# Set the minimum confidence threshold for object detection
-confidence_threshold = 0.92
+confidence_threshold = float(os.getenv("DETECTION_CONFIDENCE", "0.92"))
+model_path = os.getenv("MODEL_PATH", "best_motorcycle_final.pt")
 
-# Load the YOLOv5 model
-model = torch.hub.load('ultralytics/yolov5', 'custom', path='best_motorcycle_final.pt')
+model = torch.hub.load('ultralytics/yolov5', 'custom', path=model_path)
 
 def main():
 
-    st.title("Object Detection with Streamlit")
+    st.title("Helmet Violation Detection")
     st.sidebar.title("Options")
 
     # Upload video file
@@ -82,7 +81,7 @@ def main():
                     output_path = os.path.join(temp_output_folder, output_filename)
                     cv2.imwrite(output_path, frame[ymin:ymax, xmin:xmax])
 
-                    print(f"Frame {frame_count} saved.")
+                    print(f"Frame {frame_count} saved")
 
                     extracted_frames = os.listdir(output_folder)
                     extracted_frames.sort()

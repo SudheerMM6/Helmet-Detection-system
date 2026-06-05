@@ -1,16 +1,97 @@
-## Automatic Helmet Detection System for Indian Road Scenarios
-Deployed the helmet detection system via a responsive web interface for real-time processing.
+# Helmet Detection and Warning System
 
-### To run this project clone it and open up the terminal. and type a command,
-``` npm install ```
+A road-safety demo that combines an Express dashboard with a Streamlit video workflow for detecting helmet violations from uploaded traffic footage.
 
-This command will install all the dependancy in the project.
+## What It Does
 
-## The dashboard to login:
-<img width="1434" alt="Screenshot 2024-10-14 at 11 38 01 PM" src="https://github.com/user-attachments/assets/ff29740a-f3d4-4a84-ab7c-0c644c331907">
+- Provides a password-protected Express dashboard for selecting monitoring locations.
+- Opens a Streamlit workflow for video upload and frame-by-frame detection.
+- Uses a custom YOLOv5 model file for detection.
+- Saves detected frames locally during processing.
 
-## Select the feed to monitor:
-<img width="1434" alt="Screenshot 2024-10-14 at 11 41 32 PM" src="https://github.com/user-attachments/assets/267944cd-0429-429a-b0f0-603902220987">
+## Tech Stack
 
-## Streamlit interface to detect violaters frame by frame
-<img width="1434" alt="Screenshot 2024-10-14 at 11 42 08 PM" src="https://github.com/user-attachments/assets/e1c0885c-1cc7-497b-915b-a4684cc84a93">
+- Node.js, Express, EJS
+- Streamlit, Python, OpenCV
+- PyTorch and YOLOv5
+
+## Project Structure
+
+```text
+Automatic-Helmet-Detection-and-Warning-System/
+  server.js              Express app entry point
+  router.js              Login, dashboard, and logout routes
+  views/                 EJS login page and dashboard HTML
+  public/                CSS and dashboard images
+  python_streamlit/      Streamlit detection app, model, and sample video
+```
+
+## Local Setup
+
+Install Node dependencies:
+
+```bash
+npm install
+```
+
+Create `.env` from `.env.example`:
+
+```env
+PORT=3000
+SESSION_SECRET=replace_with_a_long_random_value
+DASHBOARD_USER=admin@example.com
+DASHBOARD_PASSWORD=replace_with_a_demo_password
+```
+
+Start the Express dashboard:
+
+```bash
+npm start
+```
+
+Open:
+
+```text
+http://localhost:3000
+```
+
+## Streamlit Setup
+
+Install Python dependencies:
+
+```bash
+cd python_streamlit
+pip install -r requirements.txt
+```
+
+Run the detection workflow:
+
+```bash
+streamlit run app.py
+```
+
+Open:
+
+```text
+http://localhost:8501
+```
+
+## Checks
+
+Run the JavaScript syntax check:
+
+```bash
+npm test
+```
+
+Run a Python syntax check:
+
+```bash
+python -m py_compile python_streamlit/app.py
+```
+
+## Notes
+
+- The included model file is required for local detection.
+- The included video is a local demo sample.
+- This project is a prototype, not a production traffic enforcement system.

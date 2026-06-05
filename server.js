@@ -1,17 +1,17 @@
 const express = require('express');
 const path = require('path');
-const bodyparser = require("body-parser");
+const crypto = require('crypto');
 const session = require("express-session");
-const { v4: uuidv4 } = require("uuid");
 
 const router = require('./router');
 
 const app = express();
 
 const port = process.env.PORT || 3000;
+const sessionSecret = process.env.SESSION_SECRET || crypto.randomBytes(32).toString('hex');
 
-app.use(bodyparser.json());
-app.use(bodyparser.urlencoded({ extended: true }))
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }))
 
 app.set('view engine', 'ejs');
 
@@ -20,16 +20,17 @@ app.use('/static', express.static(path.join(__dirname, 'public')))
 app.use('/assets', express.static(path.join(__dirname, 'public/assets')))
 
 app.use(session({
-    secret: uuidv4(), //  '1b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed'
+    secret: sessionSecret,
     resave: false,
-    saveUninitialized: true
+    saveUninitialized: false
 }));
 
 app.use('/route', router);
 
-// home route
 app.get('/', (req, res) =>{
-    res.render('base', { title : "Login System"});
+    res.render('base', { title : "Helmet Detection Dashboard"});
 })
 
-app.listen(port, ()=>{ console.log("Listening to the server on http://localhost:3000")});
+app.listen(port, () => {
+    console.log(`Helmet dashboard running on http://localhost:${port}`);
+});
