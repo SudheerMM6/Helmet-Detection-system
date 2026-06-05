@@ -3,6 +3,8 @@ node_modules/
 *.log
 python_streamlit/helmet_data/
 python_streamlit/temp_helmet_data/
+python_streamlit/*.mp4
+python_streamlit/*.avi
 __pycache__/
 .venv/
 .vscode/

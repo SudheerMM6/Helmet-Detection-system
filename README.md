@@ -23,7 +23,7 @@ Automatic-Helmet-Detection-and-Warning-System/
   router.js              Login, dashboard, and logout routes
   views/                 EJS login page and dashboard HTML
   public/                CSS and dashboard images
-  python_streamlit/      Streamlit detection app, model, and sample video
+  python_streamlit/      Streamlit detection app and model file
 ```
 
 ## Local Setup
@@ -76,6 +76,8 @@ Open:
 http://localhost:8501
 ```
 
+Upload a local `.mp4` or `.avi` file from the Streamlit sidebar. Sample videos are not tracked in Git because video files make the repository heavy. For local testing, place your own sample under `python_streamlit/` or upload it from any folder on your machine.
+
 ## Checks
 
 Run the JavaScript syntax check:
@@ -92,6 +94,7 @@ python -m py_compile python_streamlit/app.py
 
 ## Notes
 
-- The included model file is required for local detection.
-- The included video is a local demo sample.
+- The model file `python_streamlit/best_motorcycle_final.pt` is required for local detection.
+- Set `MODEL_PATH` if you store the model somewhere else.
+- Detection quality depends on the model, video angle, lighting, and confidence threshold.
 - This project is a prototype, not a production traffic enforcement system.

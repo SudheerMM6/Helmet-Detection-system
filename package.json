@@ -9,7 +9,7 @@
     "test": "node --check server.js && node --check router.js"
   },
   "keywords": [],
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "ejs": "^3.1.10",
     "express": "^4.21.2",
