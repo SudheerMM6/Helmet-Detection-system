@@ -32,3 +32,6 @@ jobs:
 
       - name: Compile Streamlit app
         run: python -m py_compile python_streamlit/app.py
+
+      - name: Run Python smoke test
+        run: python python_streamlit/app.py --smoke-test

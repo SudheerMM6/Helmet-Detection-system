@@ -43,6 +43,8 @@ DASHBOARD_USER=admin@example.com
 DASHBOARD_PASSWORD=replace_with_a_demo_password
 ```
 
+`DASHBOARD_USER` and `DASHBOARD_PASSWORD` are required before the dashboard login will work. `SESSION_SECRET` is required when `NODE_ENV=production`; in local development the app can start without it, but it will print a warning and use a temporary session secret.
+
 Start the Express dashboard:
 
 ```bash
@@ -92,9 +94,18 @@ Run a Python syntax check:
 python -m py_compile python_streamlit/app.py
 ```
 
+Run the lightweight Python smoke check:
+
+```bash
+python python_streamlit/app.py --smoke-test
+```
+
+The smoke check verifies configuration code without loading YOLO or requiring the model file.
+
 ## Notes
 
 - The model file `python_streamlit/best_motorcycle_final.pt` is required for local detection.
 - Set `MODEL_PATH` if you store the model somewhere else.
+- The model loads only when the Streamlit workflow runs, so syntax and smoke checks do not download or initialize YOLO.
 - Detection quality depends on the model, video angle, lighting, and confidence threshold.
 - This project is a prototype, not a production traffic enforcement system.

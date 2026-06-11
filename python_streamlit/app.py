@@ -1,19 +1,63 @@
 
-import cv2
-import torch
-import streamlit as st
-import tempfile
 import os
+import sys
+import tempfile
+from functools import lru_cache
 
-confidence_threshold = float(os.getenv("DETECTION_CONFIDENCE", "0.92"))
-model_path = os.getenv("MODEL_PATH", "best_motorcycle_final.pt")
 
-model = torch.hub.load('ultralytics/yolov5', 'custom', path=model_path)
+def get_confidence_threshold():
+    return float(os.getenv("DETECTION_CONFIDENCE", "0.92"))
+
+
+def get_model_path():
+    return os.getenv("MODEL_PATH", "best_motorcycle_final.pt")
+
+
+def validate_model_path(model_path):
+    if not model_path:
+        raise ValueError("MODEL_PATH cannot be empty")
+
+    if not os.path.exists(model_path):
+        raise FileNotFoundError(f"Model file not found: {model_path}")
+
+    return model_path
+
+
+@lru_cache(maxsize=1)
+def load_model(model_path):
+    import torch
+
+    return torch.hub.load('ultralytics/yolov5', 'custom', path=model_path)
+
+
+def run_smoke_test():
+    threshold = get_confidence_threshold()
+    if not 0 <= threshold <= 1:
+        raise ValueError("DETECTION_CONFIDENCE must be between 0 and 1")
+
+    model_path = get_model_path()
+    if not model_path:
+        raise ValueError("MODEL_PATH cannot be empty")
+
+    print("Smoke test passed: configuration helpers load without the YOLO model.")
+
 
 def main():
+    import cv2
+    import streamlit as st
+
+    confidence_threshold = get_confidence_threshold()
+    model_path = get_model_path()
 
     st.title("Helmet Violation Detection")
     st.sidebar.title("Options")
+
+    try:
+        validate_model_path(model_path)
+        model = load_model(model_path)
+    except Exception as exc:
+        st.error(f"Could not load the detection model: {exc}")
+        st.stop()
 
     # Upload video file
     video_file = st.sidebar.file_uploader("Upload a video file", type=["mp4", "avi"])
@@ -120,4 +164,7 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    if "--smoke-test" in sys.argv:
+        run_smoke_test()
+    else:
+        main()

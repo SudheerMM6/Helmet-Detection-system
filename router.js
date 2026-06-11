@@ -2,14 +2,31 @@ const express = require("express");
 const router = express.Router();
 const path = require("path");
 
-const dashboardUser = process.env.DASHBOARD_USER || "admin@example.com";
-const dashboardPassword = process.env.DASHBOARD_PASSWORD || "change-me";
+function getDashboardCredentials() {
+    const dashboardUser = process.env.DASHBOARD_USER;
+    const dashboardPassword = process.env.DASHBOARD_PASSWORD;
 
-router.post('/login', (req, res)=>{
-    if(req.body.email === dashboardUser && req.body.password === dashboardPassword){
+    if (!dashboardUser || !dashboardPassword) {
+        return null;
+    }
+
+    return { dashboardUser, dashboardPassword };
+}
+
+router.post('/login', (req, res) => {
+    const credentials = getDashboardCredentials();
+
+    if (!credentials) {
+        return res.status(503).render('base', {
+            title: "Helmet Detection Dashboard",
+            error: "Dashboard credentials are not configured"
+        });
+    }
+
+    if (req.body.email === credentials.dashboardUser && req.body.password === credentials.dashboardPassword) {
         req.session.user = req.body.email;
         res.redirect('/route/dashboard');
-    }else{
+    } else {
         res.status(401).render('base', {
             title: "Helmet Detection Dashboard",
             error: "Invalid email or password"
@@ -29,17 +46,17 @@ router.get('/dashboard', (req, res) => {
     }
 });
 
-router.get('/logout', (req ,res)=>{
-    req.session.destroy(function(err){
-        if(err){
-            res.status(500).send("Could not log out")
-        }else{
+router.get('/logout', (req, res) => {
+    req.session.destroy(function(err) {
+        if (err) {
+            res.status(500).send("Could not log out");
+        } else {
             res.render('base', {
                 title: "Helmet Detection Dashboard",
-                logout : "Logged out successfully"
-            })
+                logout: "Logged out successfully"
+            });
         }
-    })
-})
+    });
+});
 
 module.exports = router;
